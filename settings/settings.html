@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snagd — Settings</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+
+    <div id="st-page">
+
+      <!-- Header -->
+      <header id="st-header">
+        <div id="st-header-inner">
+          <span id="st-logo">Snagd</span>
+          <span id="st-header-sub">Settings</span>
+        </div>
+      </header>
+
+      <main id="st-main">
+
+        <!-- Notifications section -->
+        <section class="st-section">
+          <h2 class="st-section-title">Weekly Nudge Notification</h2>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Enable weekly nudge</span>
+              <span class="st-hint">Get reminded of unfinished tasks every week</span>
+            </div>
+            <label class="st-toggle" aria-label="Enable weekly nudge">
+              <input type="checkbox" id="nudgeEnabled" />
+              <span class="st-toggle-track"></span>
+            </label>
+          </div>
+
+          <div class="st-row" id="nudge-options">
+            <div class="st-row-label">
+              <span class="st-label">Nudge day</span>
+            </div>
+            <select id="nudgeDay" class="st-select" aria-label="Nudge day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">Sunday</option>
+            </select>
+          </div>
+
+          <div class="st-row" id="nudge-hour-row">
+            <div class="st-row-label">
+              <span class="st-label">Nudge time</span>
+            </div>
+            <select id="nudgeHour" class="st-select" aria-label="Nudge hour">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <div class="st-row" id="nudge-threshold-row">
+            <div class="st-row-label">
+              <span class="st-label">Minimum tasks to trigger</span>
+              <span class="st-hint">Only nudge if you have at least this many active tasks</span>
+            </div>
+            <select id="nudgeThreshold" class="st-select" aria-label="Nudge threshold">
+              <option value="3">3 tasks</option>
+              <option value="5">5 tasks</option>
+              <option value="10">10 tasks</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Appearance section -->
+        <section class="st-section">
+          <h2 class="st-section-title">Appearance</h2>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Theme</span>
+            </div>
+            <div class="st-theme-group" role="group" aria-label="Theme">
+              <label class="st-theme-btn">
+                <input type="radio" name="theme" value="light" />
+                <span>Light</span>
+              </label>
+              <label class="st-theme-btn">
+                <input type="radio" name="theme" value="dark" />
+                <span>Dark</span>
+              </label>
+              <label class="st-theme-btn">
+                <input type="radio" name="theme" value="auto" />
+                <span>Auto</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- GitHub Gist Sync section -->
+        <section class="st-section">
+          <h2 class="st-section-title">GitHub Gist Sync</h2>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">GitHub Personal Access Token (PAT)</span>
+              <span class="st-hint">Required for Gist backup and sync (must have 'gist' scope)</span>
+            </div>
+            <input type="password" id="githubPat" class="st-input" placeholder="ghp_..." autocomplete="off" aria-label="GitHub Token" />
+          </div>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Gist ID (Optional)</span>
+              <span class="st-hint">Leave blank to automatically create a new private Gist</span>
+            </div>
+            <input type="text" id="gistId" class="st-input" placeholder="Gist ID" autocomplete="off" aria-label="Gist ID" />
+          </div>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Sync Action</span>
+              <span class="st-hint">Backup local tasks to Gist, or restore tasks from Gist</span>
+            </div>
+            <div class="st-btn-group">
+              <button id="syncBackup" class="st-btn st-btn-secondary">Backup to Gist</button>
+              <button id="syncRestore" class="st-btn st-btn-secondary">Restore from Gist</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Data section -->
+        <section class="st-section">
+          <h2 class="st-section-title">Data</h2>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Export tasks</span>
+              <span class="st-hint">Download all your tasks as a file</span>
+            </div>
+            <div class="st-btn-group">
+              <button id="exportJson" class="st-btn st-btn-secondary">Export JSON</button>
+              <button id="exportCsv"  class="st-btn st-btn-secondary">Export CSV</button>
+            </div>
+          </div>
+
+          <div class="st-row">
+            <div class="st-row-label">
+              <span class="st-label">Clear completed tasks</span>
+              <span class="st-hint">Permanently delete all completed tasks</span>
+            </div>
+            <button id="clearCompleted" class="st-btn st-btn-danger">Clear Completed</button>
+          </div>
+        </section>
+
+        <!-- Save bar -->
+        <div id="st-save-bar">
+          <span id="st-save-msg" hidden></span>
+          <button id="st-save-btn" class="st-btn st-btn-primary">Save Settings</button>
+        </div>
+
+      </main>
+
+      <footer id="st-footer">
+        <span>Snagd v1.0 &mdash; M. Uwais Baig</span>
+        <span class="st-footer-sep">&middot;</span>
+        <a id="st-privacy-link" href="#" target="_blank" rel="noopener">Privacy Policy</a>
+      </footer>
+
+    </div>
+
+    <script src="settings.js"></script>
+  </body>
+</html>

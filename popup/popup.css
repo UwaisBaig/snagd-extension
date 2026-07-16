@@ -1,0 +1,778 @@
+/* ─── Premium Dark Theme Variables ────────────────────────────────────────── */
+:root {
+  --bg-primary: #0C101B;        /* Very dark navy background */
+  --bg-secondary: #121824;      /* Header / subheader dark background */
+  --bg-list: #0C101B;
+  --card-bg: #17202F;           /* Slate blue card background */
+  --card-selected-bg: #202D40;  /* Lighter slate for selected/hover card */
+  --text-primary: #FFFFFF;      /* Clean white text */
+  --text-secondary: #94A3B8;    /* Muted grey-blue text */
+  --text-muted: #64748B;        /* Muted caption text */
+  --border-color: #1A2333;      /* Subtle dark border */
+  --accent-teal: #0D9488;       /* Active tab underline / accents */
+  
+  --priority-red: #DC2626;
+  --priority-orange: #EA580C;
+  --priority-yellow: #CA8A04;
+  --priority-green: #16A34A;
+}
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 480px;                 /* Exact dimension from screenshot */
+  height: 600px;
+  min-height: 600px;
+  max-height: 600px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Navigation Header ────────────────────────────────────────────────────── */
+#tt-header {
+  height: 56px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+
+#tt-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tt-logo-icon {
+  flex-shrink: 0;
+}
+
+#tt-logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+#tt-nav {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  align-items: center;
+}
+
+.tt-nav-item {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  justify-content: center;
+  padding: 0 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.tt-nav-item:hover {
+  color: #FFFFFF;
+}
+
+.tt-nav-item.tt-active {
+  color: #FFFFFF;
+  border-bottom-color: var(--accent-teal);
+  font-weight: 600;
+}
+
+.tt-nav-item svg {
+  stroke-width: 2.2;
+}
+
+#tt-chevron-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+#tt-chevron-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Search & Controls Row ────────────────────────────────────────────────── */
+#tt-controls-row {
+  height: 48px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+#tt-layout-indicator {
+  width: 24px;
+  height: 24px;
+  background: rgba(13, 148, 136, 0.15);
+  border: 1px solid var(--accent-teal);
+  border-radius: 4px;
+  color: var(--accent-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#tt-search-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#tt-search {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1.5px solid #202D40;
+  border-radius: 6px;
+  padding: 6px 28px 6px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #FFFFFF;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+#tt-search:focus {
+  border-color: var(--accent-teal);
+}
+
+#tt-search-clear {
+  display: none;
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+#tt-search-clear.visible {
+  display: block;
+}
+
+#tt-badge {
+  background: #FFFFFF;
+  color: var(--bg-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  min-width: 48px;
+  text-align: center;
+}
+
+#tt-active-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ─── Filter Tabs (Hidden/Optional if not needed in mock layout, keep styled) ── */
+#tt-filters {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tt-filter-tab {
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.tt-filter-tab:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tt-filter-tab.tt-active {
+  background: var(--card-bg);
+  color: #FFFFFF;
+}
+
+/* ─── Table Headers ────────────────────────────────────────────────────────── */
+#tt-table-header {
+  display: grid;
+  grid-template-columns: 24px 1fr 65px 70px 100px 24px;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-primary);
+}
+
+.col-task { grid-column: 2; }
+.col-due { grid-column: 3; }
+.col-priority { grid-column: 4; }
+.col-notes { grid-column: 5; }
+
+/* ─── Task List ────────────────────────────────────────────────────────────── */
+#tt-task-list {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-list);
+  padding: 4px 0;
+}
+
+/* ─── Task Card ────────────────────────────────────────────────────────────── */
+.tt-card {
+  display: grid;
+  grid-template-columns: 24px 1fr 65px 70px 100px 24px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 16px;
+  margin: 1px 0;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: background 150ms ease, border-left 150ms ease;
+  min-height: 52px;
+}
+
+.tt-card:hover {
+  background: var(--card-bg);
+}
+
+.tt-card.tt-selected {
+  background: var(--card-selected-bg);
+  border-left: 3px solid var(--accent-teal);
+}
+
+/* Checkbox (column 1) */
+.tt-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 150ms ease;
+}
+
+.tt-checkbox:hover {
+  border-color: var(--accent-teal);
+}
+
+.tt-checkbox.tt-checked {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+}
+
+.tt-checkbox-check {
+  width: 9px;
+  height: 9px;
+  display: none;
+}
+
+.tt-checkbox.tt-checked .tt-checkbox-check {
+  display: block;
+}
+
+/* Title block (column 2) */
+.tt-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tt-favicon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tt-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.tt-card-title:hover {
+  text-decoration: underline;
+}
+
+.tt-completed .tt-card-title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Due Date (column 3) */
+.tt-card-due {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.tt-card-due.tt-due-today {
+  color: var(--accent-teal);
+}
+
+.tt-card-due.tt-due-overdue {
+  color: var(--priority-red);
+}
+
+/* Priority (column 4) */
+.tt-card-priority-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tt-priority-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tt-priority-dot.p1 { background: var(--priority-red); }
+.tt-priority-dot.p2 { background: var(--priority-orange); }
+.tt-priority-dot.p3 { background: var(--priority-yellow); }
+.tt-priority-dot.none { background: var(--priority-green); }
+
+.tt-priority-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.tt-priority-text.p1 { color: var(--priority-red); }
+.tt-priority-text.p2 { color: var(--priority-orange); }
+.tt-priority-text.p3 { color: var(--priority-yellow); }
+.tt-priority-text.none { color: var(--priority-green); }
+
+/* Note Pill (column 5) */
+.tt-note-pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+  cursor: pointer;
+}
+
+/* Priority based Note Pill Styling */
+.tt-note-pill.p1 {
+  background: rgba(220, 38, 38, 0.15);
+  color: #FCA5A5;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+.tt-note-pill.p2 {
+  background: rgba(234, 88, 12, 0.15);
+  color: #FED7AA;
+  border: 1px solid rgba(234, 88, 12, 0.25);
+}
+.tt-note-pill.p3 {
+  background: rgba(202, 138, 4, 0.15);
+  color: #FEF08A;
+  border: 1px solid rgba(202, 138, 4, 0.25);
+}
+.tt-note-pill.none {
+  background: rgba(22, 163, 74, 0.15);
+  color: #86EFAC;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+/* Actions Menu Button (column 6) */
+.tt-action-trigger {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.tt-action-trigger:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tt-action-trigger::after {
+  content: "•••";
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Expander panel for full notes / description details */
+.tt-card-expanded-desc {
+  grid-column: 2 / -1;
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  border-left: 2px solid var(--text-muted);
+}
+
+/* Trash / Edit / Toggle popover styles */
+.tt-popover {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border-radius: 6px;
+  padding: 4px 8px;
+  z-index: 10;
+}
+
+.tt-popover button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.tt-popover button:hover {
+  color: #FFFFFF;
+}
+
+.tt-popover button.tt-popover-delete {
+  color: var(--priority-red);
+}
+
+/* Inline editing styles */
+.tt-edit-title,
+.tt-edit-note,
+.tt-edit-due {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 11px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+}
+
+.tt-edit-title:focus,
+.tt-edit-note:focus,
+.tt-edit-due:focus {
+  border-color: var(--accent-teal);
+}
+
+.tt-edit-actions-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tt-edit-btn-save {
+  background: var(--accent-teal);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tt-edit-btn-cancel {
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* ─── Dynamic Views: Projects & Activity ────────────────────────────────────── */
+#tt-projects-view,
+#tt-activity-view {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-list);
+}
+
+#tt-projects-view {
+  padding: 12px 16px;
+}
+
+.tt-projects-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--accent-teal);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.tt-projects-back-btn:hover {
+  text-decoration: underline;
+}
+
+.tt-project-folder-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.tt-project-folder-card:hover {
+  background: var(--card-selected-bg);
+}
+
+.tt-project-folder-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tt-project-folder-icon {
+  color: var(--accent-teal);
+  flex-shrink: 0;
+}
+
+.tt-project-folder-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tt-project-folder-count {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+/* Activity View Dashboard */
+#tt-activity-view {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tt-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tt-stats-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.tt-stats-card-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-teal);
+  margin-top: 4px;
+}
+
+.tt-stats-card-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tt-timeline-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.tt-timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--accent-teal);
+  background: rgba(255,255,255, 0.01);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 8px;
+}
+
+.tt-timeline-item-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tt-timeline-item-date {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* ─── Scrollbar styling ────────────────────────────────────────────────────── */
+#tt-task-list::-webkit-scrollbar,
+#tt-projects-view::-webkit-scrollbar,
+#tt-activity-view::-webkit-scrollbar {
+  width: 6px;
+}
+#tt-task-list::-webkit-scrollbar-track,
+#tt-projects-view::-webkit-scrollbar-track,
+#tt-activity-view::-webkit-scrollbar-track {
+  background: transparent;
+}
+#tt-task-list::-webkit-scrollbar-thumb,
+#tt-projects-view::-webkit-scrollbar-thumb,
+#tt-activity-view::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+#tt-task-list::-webkit-scrollbar-thumb:hover,
+#tt-projects-view::-webkit-scrollbar-thumb:hover,
+#tt-activity-view::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────────── */
+#tt-footer {
+  height: 36px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+#tt-bmc-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+#tt-bmc-link:hover {
+  color: var(--accent-teal);
+}
+
+/* ─── Empty State ──────────────────────────────────────────────────────────── */
+#tt-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  gap: 12px;
+  text-align: center;
+}
+
+#tt-empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+#tt-empty-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}

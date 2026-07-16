@@ -1,0 +1,399 @@
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Light theme (default) ────────────────────────────────────────────────── */
+:root {
+  --bg:          #F8FAFC;
+  --surface:     #FFFFFF;
+  --border:      #E2E8F0;
+  --text:        #1E293B;
+  --text-muted:  #64748B;
+  --text-hint:   #94A3B8;
+  --primary:     #1E3A8A;
+  --primary-hover:#1e40af;
+  --accent:      #0D9488;
+  --danger:      #DC2626;
+  --danger-hover:#b91c1c;
+  --toggle-off:  #CBD5E1;
+  --toggle-on:   #1E3A8A;
+  --shadow:      0 1px 3px rgba(0,0,0,0.07);
+  --btn-secondary-bg: #F1F5F9;
+  --btn-secondary-text: #1E293B;
+  --border-color: #E2E8F0;
+}
+
+/* ─── Dark theme ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:          #0A0F1E;
+  --surface:     #1E293B;
+  --border:      #334155;
+  --text:        #F1F5F9;
+  --text-muted:  #94A3B8;
+  --text-hint:   #64748B;
+  --toggle-off:  #475569;
+  --shadow:      0 1px 3px rgba(0,0,0,0.3);
+  --btn-secondary-bg: #334155;
+  --btn-secondary-text: #F1F5F9;
+  --border-color: #475569;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+/* ─── Page layout ───────────────────────────────────────────────────────────── */
+#st-page {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+#st-header {
+  background: var(--primary);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+#st-header-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+#st-logo {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#st-header-sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* ─── Main content ───────────────────────────────────────────────────────────── */
+#st-main {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Sections ──────────────────────────────────────────────────────────────── */
+.st-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.st-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Rows ──────────────────────────────────────────────────────────────────── */
+.st-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.st-row:last-child {
+  border-bottom: none;
+}
+
+.st-row-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.st-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.st-hint {
+  font-size: 11px;
+  color: var(--text-hint);
+  line-height: 1.4;
+}
+
+/* ─── Toggle switch ──────────────────────────────────────────────────────────── */
+.st-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.st-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.st-toggle-track {
+  width: 40px;
+  height: 22px;
+  background: var(--toggle-off);
+  border-radius: 11px;
+  transition: background 200ms ease;
+  position: relative;
+}
+
+.st-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 200ms ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.st-toggle input:checked + .st-toggle-track {
+  background: var(--toggle-on);
+}
+
+.st-toggle input:checked + .st-toggle-track::after {
+  transform: translateX(18px);
+}
+
+.st-toggle input:focus-visible + .st-toggle-track {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ─── Select ────────────────────────────────────────────────────────────────── */
+.st-select {
+  padding: 7px 28px 7px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--surface);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%2394A3B8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 130px;
+}
+
+.st-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ─── Theme radio group ──────────────────────────────────────────────────────── */
+.st-theme-group {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.st-theme-btn {
+  cursor: pointer;
+}
+
+.st-theme-btn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.st-theme-btn span {
+  display: block;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  transition: background 120ms ease, color 120ms ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.st-theme-btn:last-child span {
+  border-right: none;
+}
+
+.st-theme-btn input:checked + span {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────────── */
+.st-btn {
+  padding: 8px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: background 120ms ease, opacity 120ms ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.st-btn-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.st-btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.st-btn-secondary {
+  background: var(--btn-secondary-bg, #F1F5F9);
+  color: var(--btn-secondary-text, #1E293B);
+  border: 1px solid var(--border-color, #E2E8F0);
+}
+
+.st-btn-secondary:hover {
+  background: var(--border-color, #E2E8F0);
+  opacity: 0.9;
+}
+
+.st-btn-danger {
+  background: #FEF2F2;
+  color: var(--danger);
+  border: 1.5px solid #FECACA;
+}
+
+.st-btn-danger:hover {
+  background: #FEE2E2;
+}
+
+.st-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Nudge options disabled state */
+#nudge-options.disabled,
+#nudge-hour-row.disabled,
+#nudge-threshold-row.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Save bar ────────────────────────────────────────────────────────────────── */
+#st-save-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 4px 0 8px;
+}
+
+#st-save-msg {
+  font-size: 13px;
+  color: #16A34A;
+  font-weight: 500;
+}
+
+#st-save-msg[hidden] {
+  display: none;
+}
+
+/* ─── Auto dark mode (system preference, if theme = "auto") ──────────────────── */
+@media (prefers-color-scheme: dark) {
+  body.theme-auto {
+    --bg:          #0A0F1E;
+    --surface:     #1E293B;
+    --border:      #334155;
+    --text:        #F1F5F9;
+    --text-muted:  #94A3B8;
+    --text-hint:   #64748B;
+    --toggle-off:  #475569;
+    --shadow:      0 1px 3px rgba(0,0,0,0.3);
+    --btn-secondary-bg: #334155;
+    --btn-secondary-text: #F1F5F9;
+    --border-color: #475569;
+  }
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────────── */
+#st-footer {
+  text-align: center;
+  color: var(--text-hint);
+  font-size: 12px;
+  padding: 0 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.st-footer-sep {
+  color: var(--border);
+}
+
+#st-footer a {
+  color: var(--text-hint);
+  text-decoration: none;
+}
+
+#st-footer a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* ─── Input styling ────────────────────────────────────────────────────────── */
+.st-input {
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  min-width: 240px;
+  transition: border-color 150ms ease;
+}
+
+.st-input:focus {
+  border-color: var(--primary);
+}
+

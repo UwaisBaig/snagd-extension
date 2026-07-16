@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snagd — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0A0F1E;
+      color: #E2E8F0;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1E293B;
+    }
+    .logo {
+      width: 40px; height: 40px;
+      background: #1E3A8A;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    h1 { font-size: 28px; color: #FFFFFF; font-weight: 700; }
+    .subtitle { color: #64748B; font-size: 14px; margin-top: 4px; }
+    h2 {
+      font-size: 18px;
+      color: #FFFFFF;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      padding-left: 12px;
+      border-left: 3px solid #0D9488;
+    }
+    p { color: #94A3B8; margin-bottom: 12px; font-size: 15px; }
+    .highlight-box {
+      background: #0D9488;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight-box p { color: white; font-size: 16px; font-weight: 500; margin: 0; text-align: center; }
+    ul { list-style: none; margin: 12px 0; }
+    ul li {
+      color: #94A3B8;
+      font-size: 15px;
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul li::before { content: "✓"; color: #0D9488; position: absolute; left: 0; font-weight: bold; }
+    .permission-card { background: #1E293B; border-radius: 8px; padding: 16px; margin: 8px 0; }
+    .permission-name {
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 14px;
+      font-family: monospace;
+      background: #0A0F1E;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .permission-desc { color: #64748B; font-size: 13px; margin: 0; }
+    .contact-box { background: #1E293B; border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+    .contact-box a { color: #0D9488; text-decoration: none; }
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #1E293B;
+      text-align: center;
+      color: #374151;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo">✓</div>
+      <div>
+        <h1>Snagd</h1>
+        <div class="subtitle">Privacy Policy</div>
+      </div>
+    </header>
+
+    <div class="highlight-box">
+      <p>Snagd collects zero personal data. Everything stays in your browser or your personal GitHub account.</p>
+    </div>
+
+    <h2>Overview</h2>
+    <p>Snagd is a Chrome extension that saves browser tabs as tasks. This privacy policy explains what data the extension accesses, how it is used, and how it is stored.</p>
+    <p>Last updated: July 2026</p>
+
+    <h2>Data We Collect</h2>
+    <p>Snagd does NOT collect any personally identifiable information. We do not collect:</p>
+    <ul>
+      <li>Names, email addresses, or contact information</li>
+      <li>Browsing history or web activity</li>
+      <li>Location data</li>
+      <li>Financial or payment information</li>
+      <li>Any data that leaves your device (except when you explicitly enable GitHub Gist Sync to back up to your own account)</li>
+    </ul>
+
+    <h2>Data Stored Locally</h2>
+    <p>Snagd stores the following data locally in your browser using <code>chrome.storage.local</code> and <code>chrome.storage.sync</code>:</p>
+    <ul>
+      <li>Tab titles and URLs that you choose to save as tasks</li>
+      <li>Optional notes you add to tasks</li>
+      <li>Due dates and priority tags you set on tasks</li>
+      <li>Task completion status</li>
+      <li>Your extension preferences (theme, nudge settings)</li>
+      <li>Your GitHub Personal Access Token (PAT) and Gist ID (if you choose to enable the optional GitHub Gist Sync feature)</li>
+    </ul>
+    <p>By default, this data never leaves your browser. It is not transmitted to any server, third party, or external service.</p>
+
+    <h2>GitHub Gist Sync (Optional)</h2>
+    <p>Snagd includes an optional GitHub Gist Sync feature to backup and sync your tasks across devices:</p>
+    <ul>
+      <li>If you enable this feature, your task data is sent directly and exclusively to a private GitHub Gist in your own GitHub account using the GitHub Personal Access Token (PAT) you provide.</li>
+      <li>The token and Gist ID are stored locally on your device in your browser's secure storage (<code>chrome.storage.sync</code>) and are sent directly to GitHub's APIs (<code>api.github.com</code>) for synchronization.</li>
+      <li>The developer of Snagd has no access to your GitHub account, token, or tasks data. No data is sent to the developer or any other third party.</li>
+    </ul>
+
+    <h2>Permissions Used</h2>
+    <div class="permission-card">
+      <span class="permission-name">storage</span>
+      <p class="permission-desc">Saves your task list and preferences locally in your browser. No data leaves your device.</p>
+    </div>
+    <div class="permission-card">
+      <span class="permission-name">contextMenus</span>
+      <p class="permission-desc">Adds the "Save tab as task" option to your right-click menu. This is the core feature of the extension.</p>
+    </div>
+    <div class="permission-card">
+      <span class="permission-name">notifications</span>
+      <p class="permission-desc">Sends a weekly reminder if you have unfinished tasks. Only fires if you have enabled this feature in settings.</p>
+    </div>
+    <div class="permission-card">
+      <span class="permission-name">alarms</span>
+      <p class="permission-desc">Schedules the weekly nudge notification. No data is involved — this only triggers a local reminder.</p>
+    </div>
+    <div class="permission-card">
+      <span class="permission-name">activeTab</span>
+      <p class="permission-desc">Reads the title and URL of your current tab when you choose to save it as a task. This data is saved locally only.</p>
+    </div>
+    <div class="permission-card">
+      <span class="permission-name">Host permissions (all URLs)</span>
+      <p class="permission-desc">Allows the extension to inject a small save popup on any webpage when you right-click. The extension does not read, modify, or transmit any page content.</p>
+    </div>
+
+    <h2>Third Party Services</h2>
+    <p>Snagd does not use any third-party analytics, advertising, or tracking services. The only external resource used is Google's favicon service (<code>google.com/s2/favicons</code>) to display website icons next to saved tasks, and GitHub's API (<code>api.github.com</code>) if you choose to enable the optional GitHub Gist Sync.</p>
+
+    <h2>Data Deletion</h2>
+    <p>You can delete all your data at any time by:</p>
+    <ul>
+      <li>Using the "Clear completed tasks" button in extension settings</li>
+      <li>Uninstalling the extension — this permanently removes all locally stored data</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Snagd does not knowingly collect any data from anyone, including children under 13.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If this privacy policy changes, the updated version will be posted at this URL. Continued use of the extension after changes constitutes acceptance of the new policy.</p>
+
+    <div class="contact-box">
+      <h2 style="border:none;padding:0;margin:0 0 8px;">Contact</h2>
+      <p style="margin:0;color:#94A3B8">
+        Questions about this privacy policy?<br>
+        Email: <a href="mailto:uwaisbaig20@gmail.com">uwaisbaig20@gmail.com</a><br>
+        Portfolio: <a href="https://uwaisbaig.netlify.app">uwaisbaig.netlify.app</a>
+      </p>
+    </div>
+
+    <footer>
+      Snagd — Chrome Extension<br>
+      Built by M. Uwais Baig · © 2026 · All rights reserved
+    </footer>
+
+  </div>
+</body>
+</html>
