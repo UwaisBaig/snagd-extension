@@ -235,7 +235,7 @@
   }
 
   // ─── Export helpers ─────────────────────────────────────────────────────────
-  def downloadFile(filename, content, mimeType) {
+  function downloadFile(filename, content, mimeType) {
     const blob = new Blob([content], { type: mimeType });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
