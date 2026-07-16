@@ -24,6 +24,10 @@
   padding: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   width: 480px;                 /* Exact dimension from screenshot */
   height: 600px;
