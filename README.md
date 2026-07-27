@@ -12,6 +12,37 @@ A Chrome Extension that converts any browser tab into an actionable task with on
 - Export tasks to JSON or CSV
 - Works on Chrome, Edge, and Brave
 
+## Roadmap
+
+- [x] One-click save via right-click menu
+- [x] Keyboard shortcut (Cmd/Ctrl+Shift+S)
+- [x] Projects — group tasks by project
+- [x] Activity log — full history of task events
+- [x] Per-task due-date reminders
+- [x] Light / Dark / Auto theme
+- [x] Workspace save & restore (tab groups)
+- [ ] GitHub Gist cloud sync (in progress)
+- [ ] Firefox / Edge port
+
+## Architecture
+
+Snagd is built entirely on Chrome Extensions
+Manifest V3, no backend, no account required:
+
+src/
+├── storage.js     # chrome.storage CRUD operations
+├── task.js        # Task model and due date logic
+├── badge.js       # Toolbar badge management
+├── search.js      # Real-time search and filtering
+├── nudge.js       # Weekly alarm notifications
+├── export.js      # JSON and CSV export
+├── keyboard.js     # Keyboard shortcut handling
+├── projects.js     # Project grouping
+├── activity.js     # Activity/event log
+├── reminders.js     # Per-task due-date reminders
+├── theme.js         # Light/Dark/Auto theme switching
+└── workspace.js      # Save/restore tab workspaces
+
 ## Tech Stack
 
 - JavaScript (vanilla, no frameworks)
