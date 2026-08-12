@@ -27,8 +27,13 @@ A Chrome Extension that converts any browser tab into an actionable task with on
 - [x] Bulk actions (multi-select complete/delete/move)
 - [x] Auto-archive old completed tasks
 - [x] Link preview enrichment (clean titles, favicons)
-- [ ] Firefox / Edge port
-- [ ] Recurring tasks
+- [x] Recurring tasks
+- [x] Checklist-style subtasks
+- [x] Free-form tags
+- [x] Natural shorthand quick-add parsing
+- [x] Productivity stats and streaks
+- [x] Firefox / Edge compatibility layer
+- [ ] Mobile companion view
 
 ## Architecture
 
@@ -36,24 +41,30 @@ Snagd is built entirely on Chrome Extensions
 Manifest V3, no backend, no account required:
 
 src/
-├── storage.js       # chrome.storage CRUD operations
-├── task.js          # Task model and due date logic
-├── badge.js         # Toolbar badge management
-├── search.js        # Real-time search and filtering
-├── nudge.js         # Weekly alarm notifications
-├── export.js        # JSON and CSV export
-├── keyboard.js       # Keyboard shortcut handling
-├── projects.js       # Project grouping
-├── activity.js       # Activity/event log
-├── reminders.js      # Per-task due-date reminders
-├── theme.js           # Light/Dark/Auto theme switching
-├── workspace.js       # Save/restore tab workspaces
-├── gist-sync.js        # GitHub Gist backup and restore
-├── import.js            # JSON/CSV import with merging
-├── snooze.js             # Preset due-date postponing
-├── bulk-actions.js        # Multi-select bulk operations
-├── archive.js              # Auto-archive old completed tasks
-└── link-preview.js          # Clean titles and favicon enrichment
+├── storage.js          # chrome.storage CRUD operations
+├── task.js             # Task model and due date logic
+├── badge.js            # Toolbar badge management
+├── search.js           # Real-time search and filtering
+├── nudge.js            # Weekly alarm notifications
+├── export.js           # JSON and CSV export
+├── keyboard.js          # Keyboard shortcut handling
+├── projects.js          # Project grouping
+├── activity.js          # Activity/event log
+├── reminders.js         # Per-task due-date reminders
+├── theme.js              # Light/Dark/Auto theme switching
+├── workspace.js          # Save/restore tab workspaces
+├── gist-sync.js           # GitHub Gist backup and restore
+├── import.js               # JSON/CSV import with merging
+├── snooze.js                # Preset due-date postponing
+├── bulk-actions.js           # Multi-select bulk operations
+├── archive.js                 # Auto-archive old completed tasks
+├── link-preview.js             # Clean titles and favicon enrichment
+├── recurring.js                 # Auto-generated recurring task occurrences
+├── subtasks.js                  # Checklist-style subtasks within tasks
+├── tags.js                      # Free-form multi-tag labels
+├── quick-add-parser.js          # Natural shorthand quick-add parsing
+├── stats.js                     # Completion rates and streak statistics
+└── compat-layer.js              # Cross-browser compatibility layer (Firefox/Edge)
 
 ## Tech Stack
 
